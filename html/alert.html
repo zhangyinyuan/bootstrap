@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>alert</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+</head>
+
+<body style="margin:20px">
+<div class="alert alert-success">alert success</div>
+<div class="alert alert-info">alert info</div>
+
+<div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+    </button>
+    <strong>Warning!</strong> Better check yourself, you're not looking too good.
+</div>
+
+<div class="alert alert-danger alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <strong class="text-capitalize">error! this is a can close error</strong>
+</div>
+
+<!--bootstrap依赖于JQuery,所以要先引入JQuery.js,然后再引入bootstrap.js-->
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
