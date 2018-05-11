@@ -39,7 +39,7 @@
 			<div class="row">
 				<!--设置多个属性,多个尺寸兼容不同的样式-->
 				<div class="col-xs-12 col-sm-3 col-lg-12" style="background-color: darkorange;">.col-xs-6 .col-sm-3 Resize your viewport or check it out on your phone for an example.</div>
-				<div class="col-xs-6 col-sm-3" style="background-color: darkkhaki;">.col-xs-6 .col-sm-3</div>
+				<div class="col-xs-6 col-sm-3 col-md-8" style="background-color: darkkhaki;">.col-xs-6 .col-sm-3</div>
 
 				<!-- Add the extra clearfix for only the required viewport -->
 				<!--<div class="clearfix visible-xs-block"></div>-->
@@ -48,9 +48,43 @@
 				<div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
 			</div>
 		</div>
-		
+
+		<hr />
+
 		<!--列偏移-->
-		
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6" style="background-color: darkorange;">col-md-6</div>
+				<div class="clearfix visible-xs-block"></div>
+				<!--列左偏移 列右偏移-->
+				<div class="col-md-5  col-md-offset-1 col-md-pull-2" style="background-color: darksalmon;">qqqqqqqqq</div>
+			</div>
+		</div>
+
+		<hr />
+
+		<!--嵌套列-->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-8" style="background-color: darkorange; height: 100px;">
+					ddd
+					<div class="row">
+						<div class="col-md-5 col-lg-offset-2" style="background-color: darkgray;">darkgray</div>
+						<div class="col-md-0" style="background-color: cornflowerblue;">col-md-0</div>
+						<div class="col-md-5 col-md-offset-1" style="background-color: darkkhaki;">darkkhaki</div>
+						<div class="col-md-2" style="background-color: darksalmon;">darksalmon</div>
+					</div>
+
+					<div class="row">
+						<!--<div class="col-md-5" style="background-color: darkgray;">darkgray</div>-->
+						<div class="col-md-5 col-md-offset-2" style="background-color: darkgreen;">darkkhaki</div>
+						<!--如果上一行有空行,填充上一行所有的空列,如果上一行没有空列,则重新开一行 ,相当于 col-md-12 . offet和push流出来的列也会填充-->
+						<div class="col-md-0" style="background-color: darkkhaki;">&nbsp;</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
 	</body>
 
 </html>
