@@ -4,5 +4,10 @@ body {
 
 .from-login {
 	width: 330px;
+	height: auto;
 	padding: 15px;
+}
+
+.form-login {
+	text-align: center;
 }
