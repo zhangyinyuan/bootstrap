@@ -1,0 +1,30 @@
+<!DOCTYPE html >
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/bootstrap.css" />
+		<script type="text/javascript" src="../js/angular.js"></script>
+	</head>
+
+	<body ng-app="myapp">
+
+		<div ng-controller="MainController as main">
+			<h2>{{main.a}}</h2>
+			<input type="button" value="求点" ng-click="main.add()" />
+		</div>
+
+		<script>
+			var myapp = angular.module("myapp", []);
+			myapp.controller("MainController", [function() {
+				this.a = 100;
+				var that = this;
+				this.add = function() {
+					that.a++;
+				}
+			}]);
+		</script>
+	</body>
+
+</html>
