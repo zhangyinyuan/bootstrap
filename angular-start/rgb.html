@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>RGB demo</title>
+		<!--<link rel="stylesheet" href="../css/bootstrap.css" />-->
+		<script type="text/javascript" src="../js/angular.js"></script>
+	</head>
+
+	<body style="margin: 80px;">
+
+		<div ng-controller="MainCtrl as main">
+			<div class="box" ng-style="main.getRGB()"></div>
+			<div>
+				R:<input type="range" min="0" max="255" ng-model="main.R" /><input type="number" ng-model="main.R" />
+			</div>
+			<div>
+				G:<input type="range" min="0" max="255" ng-model="main.G" /><input type="number" ng-model="main.G" />
+			</div>
+			<div>
+				B:<input type="range" min="0" max="255" ng-model="main.B" /><input type="number" ng-model="main.B" />
+			</div>
+		</div>
+
+		<style>
+			.box {
+				width: 300px;
+				height: 300px;
+				border: 1px solid red;
+			}
+		</style>
+		<script>
+			var myapp = angular.module("myapp", []);
+			myapp.controller("MainCtrl", [function() {
+				this.R = 100;
+				this.G = 100;
+				this.B = 100;
+				var self = this;
+				this.getRGB = function() {
+					return {
+						"background-color": "RGB(" + self.R + "," + self.G + "," + self.B + ")"
+					};
+				};
+			}]);
+		</script>
+	</body>
+
+</html>
