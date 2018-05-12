@@ -1,5 +1,6 @@
-<!DOCTYPE html >
-<html>
+<!DOCTYPE html>
+<!--官方写法  ng-app 写在html标签里面-->
+<html ng-app="myapp">
 
 	<head>
 		<meta charset="UTF-8">
@@ -8,11 +9,23 @@
 		<script type="text/javascript" src="../js/angular.js"></script>
 	</head>
 
-	<body ng-app="myapp">
+	<body class="container">
 
 		<div ng-controller="MainController as main">
 			<h2>{{main.a}}</h2>
 			<input type="button" value="求点" ng-click="main.add()" />
+		</div>
+
+		<hr />
+
+		<input placeholder="please input youname" ng-model="yourname" />
+		<h1>Hello {{yourname}}</h1>
+
+		<hr />
+
+		<div ng-controller="MainController as main">
+			<label for="origin2double">翻倍后等于</label>
+			<input ng-model="num" ng-model="num" />
 		</div>
 
 		<script>

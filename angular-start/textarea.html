@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>文本可输入文字提示</title>
+		<link rel="stylesheet" href="../css/bootstrap.css" />
+		<script type="text/javascript" src="../js/angular.js"></script>
+	</head>
+
+	<body style="margin: 40px;">
+
+		<div ng-controller="MainCtrl as main">
+			<!--ng 如果是表达式,赋值的时候不需要{{}},如果不是表达式,则需要加{{}},如  maxlength="{{main.maxTextLength}}"-->
+			<textarea rows="5" cols="90" ng-model="main.text" autofocus="true"></textarea>
+			<span ng-style="main.getColor()">{{main.text.length}}/{{main.maxTextLength}} 字</span>
+			<div> <input type="button" class="btn btn-primary btn-lg" value="发布" ng-disabled="main.text.length > main.maxTextLength || main.text.length == 0" />
+				<input type="button" class="btn btn-primary btn-lg" value="清空" ng-disabled="main.text.length == 0" ng-click="main.reset()" />
+			</div>
+		</div>
+
+		<script>
+			var myapp = angular.module("myapp", []);
+			myapp.controller("MainCtrl", [function() {
+				this.text = "";
+				this.maxTextLength = 100;
+				var self = this;
+				this.getColor = function() {
+					return self.text.length > self.maxTextLength ? {
+						"color": "red"
+					} : {
+						"color": "#333"
+					};
+				};
+
+				this.reset = function() {
+					this.text = "";
+				}
+			}]);
+		</script>
+	</body>
+
+</html>

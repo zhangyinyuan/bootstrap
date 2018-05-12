@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/angular.js"></script>
+	</head>
+
+	<body>
+
+		<div ng-controller="MainController as main">
+			<input type="radio" name="sex" value="male" ng-model="person.sex" />男
+			<input type="radio" name="sex" value="female" ng-model="person.sex" />女
+			<input type="text" ng-model="person.sex" />
+			<hr />
+		</div>
+		<script>
+			var myapp = angular.module("myapp", []);
+			myapp.controller("MainController", [function() {}]);
+		</script>
+	</body>
+
+</html>
