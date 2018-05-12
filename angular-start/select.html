@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>下拉框</title>
+		<link rel="stylesheet" href="../css/bootstrap.css" />
+		<script type="text/javascript" src="../js/angular.js"></script>
+	</head>
+
+	<body style="margin: 60px;">
+
+		<div ng-controller="MainCtrl as main">
+			<select ng-model="main.defaultValue" ng-options="item for item in main.arrays"></select>
+			<h3>{{main.defaultValue}}</h3>
+		</div>
+		<script>
+			var myapp = angular.module("myapp", []);
+			myapp.controller("MainCtrl", [function() {
+				this.arrays = ["张三", "李四", "王五", "赵六"];
+				this.defaultValue = this.arrays[0];
+				this.tmp = 100;
+			}]);
+		</script>
+
+	</body>
+
+</html>
