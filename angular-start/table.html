@@ -19,7 +19,7 @@
 		</style>
 	</head>
 
-	<body>
+	<body style="margin: 60px">
 		<div ng-controller="MainCtrl as main">
 			<table>
 				<tr>
@@ -28,16 +28,26 @@
 					<th>语文成绩</th>
 					<th>数学成绩</th>
 					<th>英语成绩</th>
+					<th>操作</th>
 				</tr>
 				<tr ng-repeat="item in main.dataList">
-					<th>{{item.studentNo}}</th>
-					<th>{{item.studentName}}</th>
-					<th>{{item.yuwen}}</th>
-					<th>{{item.shuxue}}</th>
-					<th>{{item.yingyu}}</th>
+					<td>{{item.studentNo}}</td>
+					<td>{{item.studentName}}</td>
+					<td>{{item.yuwen}}</td>
+					<td>{{item.shuxue}}</td>
+					<td>{{item.yingyu}}</td>
+					<td ><input type="button" name="" ng-click="main.remove(item.studentNo)" value="删除" /></td>
 				</tr>
-
 			</table>
+
+			<hr>
+			<h1>结果：{{main.formObject}}</h1>
+			<p>学号：<input type="text" name="studentNo" ng-model="main.formObject.studentNo"></p>			
+			<p>姓名:<input type="text" name="studentName" ng-model="main.formObject.studentName"> </p>
+			<p>语文成绩：<input type="number" name="yuwen" ng-model="main.formObject.yuwen"></p>
+			<p>数学成绩：<input type="number" name="shuxue" ng-model="main.formObject.shuxue"></p>
+			<p>英语成绩：<input type="number" name="yingyu" ng-model="main.formObject.yingyu"></p>
+			<button ng-click="main.insert()"ng>插入一行</button>
 		</div>
 
 		<script>
@@ -62,6 +72,23 @@
 					"shuxue": 89,
 					"yingyu": 187
 				}];
+				// 定义一个空对象
+				this.fromObject = {};
+				var self = this;
+				this.insert = function(){
+					// 数组中添加一个对象
+					self.dataList.push(self.formObject);
+					self.formObject = {};
+				};
+
+				this.remove = function(sid){
+					for (var i = self.dataList.length - 1; i >= 0; i--) {
+						if (self.dataList[i] == sid ) {
+							self.dataList.splice(i,1);
+							break;
+						} 
+					}
+				};
 			}]);
 		</script>
 	</body>
