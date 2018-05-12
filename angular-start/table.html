@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/bootstrap.css" />
+		<script type="text/javascript" src="../js/angular.js"></script>
+		<style>
+			table {
+				border-collapse: collapse;
+			}
+			
+			table,
+			th,
+			td {
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div ng-controller="MainCtrl as main">
+			<table>
+				<tr>
+					<th>学号</th>
+					<th>姓名</th>
+					<th>语文成绩</th>
+					<th>数学成绩</th>
+					<th>英语成绩</th>
+				</tr>
+				<tr ng-repeat="item in main.dataList">
+					<th>{{item.studentNo}}</th>
+					<th>{{item.studentName}}</th>
+					<th>{{item.yuwen}}</th>
+					<th>{{item.shuxue}}</th>
+					<th>{{item.yingyu}}</th>
+				</tr>
+
+			</table>
+		</div>
+
+		<script>
+			var myapp = angular.module("myapp", []);
+			myapp.controller("MainCtrl", [function() {
+				this.dataList = [{
+					"studentNo": 10010,
+					"studentName": "张三",
+					"yuwen": 100,
+					"shuxue": 95,
+					"yingyu": 100
+				}, {
+					"studentNo": 10011,
+					"studentName": "lisi",
+					"yuwen": 100,
+					"shuxue": 96,
+					"yingyu": 100
+				}, {
+					"studentNo": 10012,
+					"studentName": "wangwu",
+					"yuwen": 100,
+					"shuxue": 89,
+					"yingyu": 187
+				}];
+			}]);
+		</script>
+	</body>
+
+</html>
