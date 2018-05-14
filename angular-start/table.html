@@ -23,12 +23,12 @@
 		<div ng-controller="MainCtrl as main">
 			<table>
 				<tr>
-					<th>学号</th>
-					<th>姓名</th>
-					<th>语文成绩</th>
-					<th>数学成绩</th>
-					<th>英语成绩</th>
-					<th>操作</th>
+					<th ng-click="main.sort(studentNo)">学号<span ng-show="main.sortBy == 'studentNo'" >{{main.asc ? "↓" : "↑"}}</span></th>
+					<th ng-click="main.sort(studentName)">姓名<span ng-show="main.sortBy == 'studentName'">{{main.asc ? "↓" : "↑"}}</span></th>
+					<th ng-click="main.sort(yuwen)">语文成绩<span ng-show="main.sortBy == 'yuwen'">{{main.asc ? "↓" : "↑"}}</span></th>
+					<th ng-click="main.sort(shuxue)">数学成绩<span ng-show="main.sortBy == 'shuxue'">{{main.asc ? "↓" : "↑"}}</span></th>
+					<th ng-click="main.sort(yinyu)">英语成绩<span ng-show="main.sortBy == 'yingyu'">{{main.asc ? "↓" : "↑"}}</span></th>
+					<th >操作</th>
 				</tr>
 				<tr ng-repeat="item in main.dataList">
 					<td>{{item.studentNo}}</td>
@@ -36,18 +36,18 @@
 					<td>{{item.yuwen}}</td>
 					<td>{{item.shuxue}}</td>
 					<td>{{item.yingyu}}</td>
-					<td ><input type="button" name="" ng-click="main.remove(item.studentNo)" value="删除" /></td>
+					<td><input type="button" name="" ng-click="main.remove(item.studentNo)" value="删除" /></td>
 				</tr>
 			</table>
 
 			<hr>
 			<h1>结果：{{main.formObject}}</h1>
-			<p>学号：<input type="text" name="studentNo" ng-model="main.formObject.studentNo"></p>			
+			<p>学号：<input type="text" name="studentNo" ng-model="main.formObject.studentNo"></p>
 			<p>姓名:<input type="text" name="studentName" ng-model="main.formObject.studentName"> </p>
 			<p>语文成绩：<input type="number" name="yuwen" ng-model="main.formObject.yuwen"></p>
 			<p>数学成绩：<input type="number" name="shuxue" ng-model="main.formObject.shuxue"></p>
 			<p>英语成绩：<input type="number" name="yingyu" ng-model="main.formObject.yingyu"></p>
-			<button ng-click="main.insert()"ng>插入一行</button>
+			<button ng-click="main.insert()" ng>插入一行</button>
 		</div>
 
 		<script>
@@ -75,19 +75,26 @@
 				// 定义一个空对象
 				this.fromObject = {};
 				var self = this;
-				this.insert = function(){
+				this.insert = function() {
 					// 数组中添加一个对象
 					self.dataList.push(self.formObject);
 					self.formObject = {};
 				};
 
-				this.remove = function(sid){
-					for (var i = self.dataList.length - 1; i >= 0; i--) {
-						if (self.dataList[i] == sid ) {
-							self.dataList.splice(i,1);
+				this.remove = function(sid) {
+					for(var i = self.dataList.length - 1; i >= 0; i--) {
+						if(self.dataList[i] == sid) {
+							self.dataList.splice(i, 1);
 							break;
-						} 
+						}
 					}
+				};
+
+				this.sortBy = "studentNo";
+				this.asc = true;
+				
+				this.sort = function(keyname){
+					self.sortBy = keyname;
 				};
 			}]);
 		</script>

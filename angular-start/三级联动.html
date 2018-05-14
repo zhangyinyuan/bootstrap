@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/bootstrap.css" />
+		<script type="text/javascript" src="../js/angular.js"></script>
+	</head>
+
+	<body>
+
+		<div ng-controller="ShengCtrl as sheng">
+			<select ng-model="sheng.selectShengId" ng-options="item.shengId as item.shengName for item in sheng.shengArray"></select>
+			<h1>{{sheng.selectShengId}}</h1>
+		</div>
+		<div ng-controller="ShengCtrl as sheng">
+			<select ng-model="sheng.selectShengId" ng-options="item.shengId as item.shengName for item in sheng.shengArray"></select>
+			<h1>{{sheng.selectShengId}}</h1>
+		</div>
+		<script>
+			var myapp = angular.module("myapp", []);
+			myapp.controller("ShengCtrl", [function() {
+				this.selectShengId = "";
+				this.shengArray = [{
+					"shengId": 1000,
+					"shengName": "北京"
+				}, {
+					"shengId": 1001,
+					"shengName": "上海"
+				}, {
+					"shengId": 1002,
+					"shengName": "广东"
+				}];
+
+				this.cityArray = [{
+					"scityId": 1000,
+					"shengName": "北京"
+				}, {
+					"cityId": 1001,
+					"shengName": "上海"
+				}, {
+					"cityId": 1002,
+					"shengName": "广东"
+				}];
+			}]);
+		</script>
+	</body>
+
+</html>

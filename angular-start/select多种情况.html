@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>下拉框</title>
+		<link rel="stylesheet" href="../css/bootstrap.css" />
+		<script type="text/javascript" src="../js/angular.js"></script>
+	</head>
+
+	<body style="margin: 60px;">
+
+		<div ng-controller="MainCtrl as main">
+			<ul>
+				<li ng-repeat= "item in main.array1">{{item}}</li>
+			</ul>
+			<select ng-model="main.defaultValue" ng-options="item for item in main.array1"></select>
+			<h3>{{main.defaultValue}}</h3>
+			<!--item.value as item.label for item in ctrl.array-->
+			<select ng-model="main.tmp" ng-options="item.userId as item.username for item in main.array2"></select>
+			<h1>{{main.tmp}}</h1>
+		</div>
+
+		<script>
+			var myapp = angular.module("myapp", []);
+			myapp.controller("MainCtrl", [function() {
+				this.array1 = ["张三", "李四", "王五", "赵六"];
+				this.defaultValue = this.array1[0];
+				this.array2 = [{
+						"userId": "10010",
+						"username": "张三"
+					},
+					{
+						"userId": "10011",
+						"username": "李四"
+					},
+					{
+						"userId": "10012",
+						"username": "王五"
+					}
+				];
+				this.tmp = this.array2[2].userId;
+			}]);
+		</script>
+
+	</body>
+
+</html>
