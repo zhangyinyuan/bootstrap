@@ -2,12 +2,7 @@ body {
 	background-color: #FFFFCC;
 }
 
-.from-login {
-	width: 330px;
-	height: auto;
-	padding: 15px;
-}
-
 .form-login {
+	width: 330px;
 	text-align: center;
 }
