@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/bootstrap.css" />
+		<script type="text/javascript" src="../js/angular.js"></script>
+	</head>
+
+	<body ng-controller="mainCtrl" style="margin: 60px;">
+
+		<div id="">
+			<input type="checkbox" ng-model="check" /><span>选我</span>
+		</div>
+
+		<h1>check = {{check}}</h1>
+
+		<div>
+			<h5>请选择</h5>
+			<input type="radio" value="dog" ng-model="radio_value" /> dog
+			<input type="radio" value="cat" ng-model="radio_value" /> cat
+			<h6>radio_value = {{radio_value}}</h6>
+		</div>
+		<script>
+			var myapp = angular.module('myapp', []);
+			myapp.controller("mainCtrl", function($scope) {
+				$scope.check = true;
+			});
+		</script>
+	</body>
+
+</html>

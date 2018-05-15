@@ -8,13 +8,26 @@
 		<script type="text/javascript" src="../js/angular.js"></script>
 		<style>
 			table {
-				border-collapse: collapse;
+				width: 100%;
 			}
 			
 			table,
 			th,
 			td {
+				padding: 5px;
 				border: 1px solid black;
+			}
+			
+			th {
+				background-color: #FFFFFF !important;
+			}
+			
+			table tr:nth-child(odd) {
+				background-color: #FF8C00;
+			}
+			
+			table tr:nth-child(even) {
+				background-color: #FFFFCC;
 			}
 		</style>
 	</head>
@@ -23,14 +36,15 @@
 		<div ng-controller="MainCtrl as main">
 			<table>
 				<tr>
-					<th ng-click="main.sort(studentNo)">学号<span ng-show="main.sortBy == 'studentNo'" >{{main.asc ? "↓" : "↑"}}</span></th>
+					<th ng-click="main.sort(studentNo)">学号<span ng-show="main.sortBy == 'studentNo'">{{main.asc ? "↓" : "↑"}}</span></th>
 					<th ng-click="main.sort(studentName)">姓名<span ng-show="main.sortBy == 'studentName'">{{main.asc ? "↓" : "↑"}}</span></th>
 					<th ng-click="main.sort(yuwen)">语文成绩<span ng-show="main.sortBy == 'yuwen'">{{main.asc ? "↓" : "↑"}}</span></th>
 					<th ng-click="main.sort(shuxue)">数学成绩<span ng-show="main.sortBy == 'shuxue'">{{main.asc ? "↓" : "↑"}}</span></th>
 					<th ng-click="main.sort(yinyu)">英语成绩<span ng-show="main.sortBy == 'yingyu'">{{main.asc ? "↓" : "↑"}}</span></th>
-					<th >操作</th>
+					<th>操作</th>
 				</tr>
-				<tr ng-repeat="item in main.dataList">
+				<!--一般不推荐页面排序 ,而是后台排序好,前台直接展示,避免不必要的-->
+				<tr ng-repeat="item in main.dataList  | orderBy:'shuxue'">
 					<td>{{item.studentNo}}</td>
 					<td>{{item.studentName}}</td>
 					<td>{{item.yuwen}}</td>
@@ -92,8 +106,8 @@
 
 				this.sortBy = "studentNo";
 				this.asc = true;
-				
-				this.sort = function(keyname){
+
+				this.sort = function(keyname) {
 					self.sortBy = keyname;
 				};
 			}]);

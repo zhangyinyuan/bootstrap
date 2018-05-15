@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+	<meta charset="UTF-8">
+	<title>scope 学习</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<script type="text/javascript" src="../js/angular.js"></script>
+	<script type="text/javascript" src="./js/scope.js"></script>
+</head>
+<body style="margin: 60px">
+	
+	<div ng-controller="MainCtrl as main">
+		<!-- {{xx | uppercase}}  大写显示到浏览器上-->
+		<h1>{{username | uppercase}}</h1>
+		<h1>{{username | lowercase}}</h1>
+		<h1>{{main.username }}</h1>
+		<input type="text" name="" ng-model="username" >
+		<input type="button" name="" ng-click="append()" value="测试调用$scope方法">
+		<h2>{{url}}</h2>
+		<h3>北京时间: {{nowTime}}</h3>
+	</div>
+</body>
+</html>

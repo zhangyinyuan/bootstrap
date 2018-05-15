@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>no-repeat 使用案例</title>
+    <script type="text/javascript" src="../js/angular.js"></script>
+</head>
+
+<body ng-controller="MainCtrl as main">
+    <span>a = {{main.a}}
+    </span>,
+    <span>arr1 = {{main.arr1}}</span>
+    <script>
+    var myapp = angular.module("myapp", []);
+    myapp.controller('MainCtrl', [function() {
+        this.a = 100;
+        this.arr1 = [
+            { "id": "001", "name": "zhangsan" },
+            { "id": "002", "name": "lisi" }
+        ];
+    }]);
+    console.log(123);
+    </script>
+</body>
+
+</html>

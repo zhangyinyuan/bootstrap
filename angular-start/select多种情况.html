@@ -12,18 +12,30 @@
 
 		<div ng-controller="MainCtrl as main">
 			<ul>
-				<li ng-repeat= "item in main.array1">{{item}}</li>
+				<li ng-repeat="item in main.array1">{{item}}</li>
 			</ul>
 			<select ng-model="main.defaultValue" ng-options="item for item in main.array1"></select>
 			<h3>{{main.defaultValue}}</h3>
-			<!--item.value as item.label for item in ctrl.array-->
-			<select ng-model="main.tmp" ng-options="item.userId as item.username for item in main.array2"></select>
-			<h1>{{main.tmp}}</h1>
+			<!--对于多个key的json,在使用select的时候,有两种写法-->
+			<!--for 前面有 两个属性的  如  x as y,那么x表示value,y表示label,同事前面的ng-model绑定的是value值,推荐这种写法
+				换句话说  左边靠近 for的那个表示label
+			-->
+			<select ng-model="one" ng-options="item.userId as item.username for item in main.array2"></select>
+			<h1>获取 {{one}}</h1>
+			<!--for前面只有一个属性的,那么for前的这个属性表示值,前面的ng-model表示item这个对象-->
+			<select ng-model="two" ng-options="item.username for item in main.array2"></select>
+			<h1>获取 {{two}}</h1>
+
+			<!--(key,value)适合 key 和 value都是 变化的情况-->
+			<select ng-model="lalala" ng-options="y.name for (x,y) in array3">
+
+			</select>
+			{{lalala}}
 		</div>
 
 		<script>
 			var myapp = angular.module("myapp", []);
-			myapp.controller("MainCtrl", [function() {
+			myapp.controller("MainCtrl", function($scope) {
 				this.array1 = ["张三", "李四", "王五", "赵六"];
 				this.defaultValue = this.array1[0];
 				this.array2 = [{
@@ -40,7 +52,19 @@
 					}
 				];
 				this.tmp = this.array2[2].userId;
-			}]);
+
+				$scope.array3 = {
+					"A": {
+						"id": "Aid001",
+						"name": "Aname001"
+					},
+					"B": {
+						"id": "Bid002",
+						"name": "Bname002"
+					}
+				};
+
+			});
 		</script>
 
 	</body>
