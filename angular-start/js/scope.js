@@ -17,6 +17,15 @@ myapp.controller('MainCtrl', function($scope, $http, $location, $timeout, $inter
 	this.username = "mainCtrl-username";
 	$scope.append = function() {
 		$scope.username += "append ";
+
+		$http({
+			method: 'GET',
+			url: 'http://localhost:8080/test/testSpringCrossOrigin'
+		}).then(function successCallback(response) {
+			console.log(response.data);
+		}, function errorCallback(response) {
+			console.log(response.data);
+		});
 	};
 
 	$scope.url = $location.absUrl();
