@@ -20,7 +20,7 @@ myapp.controller('MainCtrl', function($scope, $http, $location, $timeout, $inter
 
 		$http({
 			method: 'GET',
-			url: 'http://localhost:8080/test/testSpringCrossOrigin'
+			url: 'http://localhost:8080/test/testHttpCrossOrigin'
 		}).then(function successCallback(response) {
 			console.log(response.data);
 		}, function errorCallback(response) {
