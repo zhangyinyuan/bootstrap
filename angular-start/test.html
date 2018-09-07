@@ -10,16 +10,19 @@
 	<body>
 
 		<script>
-			$(function() {
-				$('#maxSumPhone').text(100);
-				$('#toggle').click(function() {
-					$('.toggleBtn').slideToggle();
-				});
-
-			});
+			//			$(function() {
+			//				$('#maxSumPhone').text(100);
+			//				$('#toggle').click(function() {
+			//					$('.toggleBtn').slideToggle();
+			//				});
+			//
+			//			});
+			if(confirm("已经是最后一张,点击确定重新浏览！")) {
+				confirm("已经是最后一张,点击确定重新浏览！")
+			}
 		</script>
-		<h1 class="toggleBtn">最多只能上传<span id="maxSumPhone"></span>张照片</h1>
-		<button id="toggle">显示/隐藏 toggleBtn</button>
+		<!--<h1 class="toggleBtn">最多只能上传<span id="maxSumPhone"></span>张照片</h1>
+		<button id="toggle">显示/隐藏 toggleBtn</button>-->
 	</body>
 
 </html>

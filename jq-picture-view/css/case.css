@@ -133,11 +133,6 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
     color: white;
 }
 
-
-
-
-
-
 /*弹出层*/
 body .demo-class {
    background-color: rgba(255,255,255,0.6);      
