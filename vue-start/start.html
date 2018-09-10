@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>vue start</title>
+	<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+</head>
+
+<body>
+	<div id="firstVue">
+		<div>message:{{message}}</div>
+		<div>message reverse computed:{{reverseMessage}}</div>
+		<div>message reverse method:{{reverseMessage2()}}</div>
+		<input placeholder="测试双向绑定" v-model="message" />
+
+		<div v-if="!ok">v-if !ok</div>
+		<div v-else-if="ok">v-else-if ok</div>
+		<div v-else="">v-else</div>
+
+		<template>
+			<div v-show="!ok">v-show</div>
+		</template>
+
+		<!-- 遍历数据 -->
+		<h3>obj in objs -> objs = {{objs}}</h3>
+		<ul>
+			<li v-for="obj in objs">
+				{{obj.id}}-{{obj.name}}
+			</li>
+		</ul>
+
+		<h3>obj in objs[0] -> objs[0] = {{objs[0]}}</h3>
+		<ul>
+			<li v-for="obj in objs[0]">
+				{{obj}}
+			</li>
+		</ul>
+
+		<h3>(value,key,index) in objs[0] -> objs[0] ={{objs[0]}} </h3>
+		<ul>
+			<li v-for="(value,key,index) in objs[0]">
+				{{key}}-{{value}}-{{index}}
+			</li>
+		</ul>
+
+		<h3>v-for="n in 3"</h3>
+		<ul>
+			<li v-for="n in 3">
+				{{n}}
+			</li>
+		</ul>
+
+		<p id="info"></p>
+	</div>
+
+	<script>
+		var vue = new Vue({
+			el: '#firstVue',
+			data: {
+				message: 'Hello Vue !',
+				ok: '',
+				objs: [{
+					"id": 100,
+					"name": "zhang"
+				}, {
+					"id": 200,
+					"name": "yinyuan"
+				}]
+			},
+			methods: {
+				//注意这里是 methods，不是method 
+				reverseMessage2: function () {
+					return this.message.split('').reverse().join('');
+				}
+			},
+			computed: {
+				//使用 computed 性能会更好，但是如果你不希望缓存，你可以使用 methods 属性
+				reverseMessage: function () {
+					return this.message.split('').reverse().join('');
+				}
+			},
+			watch: {
+				message: function (val) {
+					console.info("meassage val = " + val)
+				}
+			}
+		});
+		vue.$watch('message', function (newVal, oriVal) {
+			document.getElementById("info").innerHTML = ("修改前的值为：" + oriVal + " 修改后的值为：" + newVal);
+		});
+	</script>
+</body>
+
+</html>
