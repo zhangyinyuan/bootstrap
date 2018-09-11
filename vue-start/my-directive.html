@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>my directive</title>
+	<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+</head>
+
+<body>
+
+	<div id='myVue'>
+		<input v-focus placeholder='测试' v-color='{bg_color:"grey",text:"学习",color:"red"}' />
+	</div>
+
+	<script>
+		/* 注意 全局指令的定义位置。要放在 new Vue前面 */
+		// 		Vue.directive('focus', {
+		// 			inserted: function (el) {
+		// 				console.info("inserted");
+		// 				el.focus();
+		// 			}
+		// 		});
+		Vue.directive('color', function (el, binding) {
+			el.innerHTML = binding.value.text;
+			el.style.backgroundColor = binding.value.bg_color;
+			el.style.color = binding.value.color;
+		});
+
+		var myVue = new Vue({
+			el: '#myVue ',
+			data: {
+
+			},
+			methods: {
+
+			},
+			computed: {
+
+			},
+			watch: {
+
+			},
+			directives: {
+				//自定义局部指令集
+				'focus': {
+					inserted: function (el) {
+						console.info("inserted");
+						el.focus();
+					}
+				}
+			}
+		});
+	</script>
+</body>
+
+</html>
