@@ -1,0 +1,16 @@
+[{
+	"menuCode": "YJF_JSGLCX",
+	"menuUrl": "http://127.0.0.1:8848/pcs-retail-postmgt/src/main/resources/static/html/3108-yunjifen/order_sett_query.html",
+	"menuId": "300",
+	"menuName": "订单结算查询"
+}, {
+	"menuCode": "YJF_JSGLCX",
+	"menuUrl": "http://127.0.0.1:8848/pcs-retail-postmgt/src/main/resources/static/html/3108-yunjifen/genetate_sett_order.html",
+	"menuId": "300",
+	"menuName": "生成结算单"
+}, {
+	"menuCode": "YJF_JSDGL",
+	"menuUrl": "http://127.0.0.1:8848/pcs-retail-postmgt/src/main/resources/static/html/3108-yunjifen/genetate_sett_order.html",
+	"menuId": "300",
+	"menuName": "云积分结算单管理"
+}]

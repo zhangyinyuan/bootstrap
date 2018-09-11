@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>bind class</title>
+	<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+</head>
+
+<body>
+
+	<div id='myVue'>
+		<!-- 多个div同时放的时候，无法正常显示 -->
+		<!-- 		<div v-bind:class='{avtive:isActive,error:isError}' class="defaule"></div>
+		<div v-bind:class='classObject'>{{classObject}}</div> -->
+		<div v-bind:class='classObject2'></div>
+	</div>
+
+	<script>
+		var myVue = new Vue({
+			el: '#myVue',
+			data: {
+				isActive: true,
+				isError: true,
+				classObject: {
+					//fixme active 没有生效,why?
+					'active': true,
+					'defaule': true,
+					'error': false
+				}
+			},
+			method: {
+
+			},
+			computed: {
+				classObject2: function () {
+					return {
+						active: this.isActive && this.isError
+					}
+				}
+			},
+			watch: {
+
+			}
+		});
+	</script>
+</body>
+
+<style type="text/css">
+	/* 注意CSS中样式的顺序决定了加载到标签上的CSS顺序 */
+
+	.error {
+		background-color: orangered;
+	}
+
+	.avtive {
+		width: 100px;
+		height: 100px;
+		background-color: green;
+	}
+
+	.defaule {
+		border: solid 4px #007DDB;
+		width: 200px;
+		height: 200px;
+	}
+</style>
+
+</html>

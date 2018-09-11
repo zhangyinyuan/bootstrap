@@ -15,6 +15,7 @@
 		<div>message reverse computed:{{reverseMessage}}</div>
 		<div>message reverse method:{{reverseMessage2()}}</div>
 		<input placeholder="测试双向绑定" v-model="message" />
+		<p id="info"></p>
 
 		<div v-if="!ok">v-if !ok</div>
 		<div v-else-if="ok">v-else-if ok</div>
@@ -52,8 +53,7 @@
 				{{n}}
 			</li>
 		</ul>
-
-		<p id="info"></p>
+		
 	</div>
 
 	<script>
