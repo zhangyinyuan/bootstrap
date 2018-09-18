@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh" ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>http test</title>
+		<script src="../js/angular.js"></script>
+	</head>
+	<body>
+		<div ng-controller="MainCtrl as main">
+			<input type="button" name="" ng-click="get()" value="测试调用$scope方法">
+		</div>
+		<script>
+			var app = angular.module('app', []);
+			app.controller('MainCtrl', function($scope, $http) {
+				console.info("init");
+				$scope.get = function() {
+					console.info('http start')
+					$http({
+						method: 'GET',
+						url: 'http://localhost:18082/pcs-retail-service/orderSett/selectSettIncomeOrder?settStatus=3'
+					}).then(function successCallback(response) {
+						// 请求成功执行代码
+						console.info("请求成功:" + response)
+					}, function errorCallback(response) {
+						// 请求失败执行代码
+						console.error("请求失败:" + JSON.stringify(response));
+					});
+				};
+
+			});
+		</script>
+
+	</body>
+</html>

@@ -17,7 +17,7 @@ myapp.controller('MainCtrl', function($scope, $http, $location, $timeout, $inter
 	this.username = "mainCtrl-username";
 	$scope.append = function() {
 		$scope.username += "append ";
-
+		console.info("start");
 		$http({
 			method: 'GET',
 			url: 'http://localhost:8080/test/testHttpCrossOrigin'

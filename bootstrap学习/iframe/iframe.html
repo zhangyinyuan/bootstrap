@@ -6,12 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Hello iframe</title>
-	<style>
-		body {
-			margin: 0px;
-			padding: 0px;
-		}
-	</style>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	
 </head>
 
 <body style="background-color:#255625;padding: 0px;">
@@ -22,11 +18,20 @@
 	</div>
 
 	<div>
-		<iframe src="left.html" style="width: 10%;float: left;background-color: #007DDB;" frameborder="0" framespacing="0"></iframe>
-		<iframe src="content.html" style="width: 60%;float: left;background-color: #009F95;" frameborder="0" framespacing="0"></iframe>
-		<iframe src="right.html" style="width: 30%;float: left;background-color: #3F3F3F;" frameborder="0" framespacing="0"></iframe>
+		<iframe id='left' src="left.html" style="width: 10%;float: left;background-color: #007DDB;" frameborder="0" framespacing="0"></iframe>
+		<iframe id='content' src="content.html" style="width: 60%;height: 60px; float: left;background-color: #009F95;" frameborder="0" framespacing="0"></iframe>
+		<iframe id='right' src="right.html" style="width: 30%;float: left;background-color: #3F3F3F;" frameborder="0" framespacing="0"></iframe>
 	</div>
 
+
+
+	<script>
+		var window_hieght = $(window).height;
+		var body_height = $(document).height;
+		console.info("window.parent.document = " + JSON.stringify(document.getElementById("left").width));
+		document.getElementById("left").height = body_height;
+		
+	</script>
 </body>
 
 </html>
