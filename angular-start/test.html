@@ -1,13 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh" ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+		<script type="text/javascript" src="../js/angular.js"></script>
+	</head>
+	<body ng-controller="MainCtrl as mian">
 
-<head>
-</head>
-
-<body>
-	<button style="background-color: #008CBA;width: 100px;height: 60px;">
-		<img style="vertical-align: center;" src="img/back.png" />返回
-	</button>
-</body>
-
+		<input ng-value="get(1)" style="border:none;background-color: gold;width: 600px; height:60px;" />
+		<script>
+			var app = angular.module('app', []);
+			app.controller('MainCtrl', function($scope) {
+				$scope.test = 'qweqweqwe';
+				var json =
+					'[{"settStatus":1,"settStatusName":"待收款"},{"settStatus":2,"settStatusName":"已收款"},{"settStatus":3,"settStatusName":"待邮乐开票"},{"settStatus":4,"settStatusName":"邮乐发票已寄出"}]';
+				$scope.settStatusList = JSON.parse(json);
+				$scope.get = function(settStatus) {
+					var settStatusName = '';
+					angular.forEach($scope.settStatusList, function(data, index) {
+						console.info(data.settStatus);
+						if (settStatus == data.settStatus) {
+							settStatusName = data.settStatusName;
+						}
+					})
+					return settStatusName;
+				}
+			});
+		</script>
+	</body>
 </html>

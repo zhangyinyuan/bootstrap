@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh" ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>angular cookie</title>
+		<!-- <script type="text/javascript" src="../js/angular.js"></script> -->
+		<!-- <script src="../js/angular-cookies.min.js"></script> -->
+		<script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+		<script src="http://code.angularjs.org/1.2.9/angular-cookies.min.js"></script>
+	</head>
+	<body ng-controller="MainCtrl as main">
+		<script>
+			var app = angular.module('app', ['ngCookies']);
+			app.controller('MainCtrl', function($cookies, $cookieStore) {
+				$cookies.name = 'autumnswind';
+				$cookieStore.put('age', 123);
+				console.info($cookies.name);
+				console.info($cookieStore.get('age'));
+			});
+		</script>
+	</body>
+</html>

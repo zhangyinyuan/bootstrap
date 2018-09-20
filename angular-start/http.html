@@ -7,10 +7,8 @@
 		<title>http test</title>
 		<script src="../js/angular.js"></script>
 	</head>
-	<body>
-		<div ng-controller="MainCtrl as main">
-			<input type="button" name="" ng-click="get()" value="测试调用$scope方法">
-		</div>
+	<body ng-controller="MainCtrl as main">
+		<input type="button" name="" ng-click="get()" value="测试调用$scope方法">
 		<script>
 			var app = angular.module('app', []);
 			app.controller('MainCtrl', function($scope, $http) {
@@ -28,9 +26,7 @@
 						console.error("请求失败:" + JSON.stringify(response));
 					});
 				};
-
 			});
 		</script>
-
 	</body>
 </html>

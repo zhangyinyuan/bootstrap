@@ -21,10 +21,10 @@
 				换句话说  左边靠近 for的那个表示label
 			-->
 			<select ng-model="one" ng-options="item.userId as item.username for item in main.array2"></select>
-			<h1>获取 {{one}}</h1>
+			<h1>one 获取 {{one}}</h1>
 			<!--for前面只有一个属性的,那么for前的这个属性表示值,前面的ng-model表示item这个对象-->
 			<select ng-model="two" ng-options="item.username for item in main.array2"></select>
-			<h1>获取 {{two}}</h1>
+			<h1>two 获取 {{two}}</h1>
 
 			<!--(key,value)适合 key 和 value都是 变化的情况-->
 			<select ng-model="lalala" ng-options="y.name for (x,y) in array3">
