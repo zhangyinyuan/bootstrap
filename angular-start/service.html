@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh" ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>angular service</title>
+		<script src="../js/angular.min.js"></script>
+
+	</head>
+	<body ng-controller="mainCtrl">
+		<input type="number" ng-model="origin" placeholder="转16" />
+		<h1>{{origin|add1Filter}}</h1>
+		<script>
+			var app = angular.module('app', []);
+
+			app.service('firstService', function() {
+				this.get16 = function(origin) {
+					return origin.toString(16);
+				};
+			});
+
+			//过滤器
+			app.filter('add1Filter', function($log, firstService) {
+				return function(origin) {
+					$log.info("add1Filter init (origin+1) =" + (origin + 1));
+					return firstService.get16(origin + 1);
+				}
+			});
+			app.controller('mainCtrl', function($log, $scope, firstService) {
+				$log.info("init");
+				$scope.origin = 254;
+				//调用service的方式
+				// $scope.origin_16 = firstService.get16($scope.origin);
+			});
+		</script>
+	</body>
+</html>
