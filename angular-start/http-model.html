@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh" ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>http test</title>
+		<script src="https://cdn.bootcss.com/angular.js/1.3.14/angular.min.js"></script>
+	</head>
+	<body ng-controller="MainCtrl as main">
+		<h1>{{test}}</h1>
+		<h1>{{array}}</h1>
+		<table border="1px" style="width: 100%;">
+			<tr ng-repeat="item in array">
+				<td>{{item.id}}</td>
+				<!-- 记得这里一定要 加 ng-model 绑定 reason 哦 。因为这个是用户输入的。不仅仅展示 -->
+				<td><input ng-model="item.reason" placeholder="请输入推荐理由" /></td>
+				<td>
+					<select ng-model="item.label">
+						<option selected value="1">1</option>
+						<option  value="2">2</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+
+
+		<br />
+		<input type="button" ng-click="get()" value="提交" />
+		<script>
+			var app = angular.module('app', []);
+			app.controller('MainCtrl', function($log, $scope, $http) {
+				$scope.test = "test";
+				$scope.array = JSON.parse('[{"id":100,"label":1}]');
+				console.info("init");
+
+				$scope.get = function() {
+					//最后提交给后台的数据转换一下 
+					var data = angular.copy($scope.array);
+					$log.info("转换后的数据：" + JSON.stringify(data));
+				}
+			});
+		</script>
+	</body>
+</html>

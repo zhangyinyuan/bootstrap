@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>点击编辑让指定的列可编辑</title>
+		<script src="js/jquery-3.3.1.js"></script>
+		<style type="text/css">
+			.edit_input {
+				border: 1.5px solid #3399ff;
+				max-width: 107px;
+				line-height: 26px;
+				box-shadow: 0 0 46px orangered;
+			}
+		</style>
+	</head>
+	<body>
+		<table style="border: 1px solid #009E94;width: 100%;">
+			<tr>
+				<td>
+					<input value="100" readonly="readonly" style="background-color: white;border: 0px;" />
+				</td>
+				<td>
+					<button>编辑</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input value="200" readonly="readonly" style="background-color: white;border: 0px;" />
+				</td>
+				<td>
+					<button>编辑</button>
+				</td>
+			</tr>
+		</table>
+		<script>
+			$(function() {
+				$("td button").click(function() {
+					console.info($(this).parents('tr').find('td input').eq(0).val());
+					$(this).parent().find('td input').eq(0).removeAttr("readonly");
+					$(this).parent().siblings().find('input').removeAttr('readonly');
+					$(this).parent().siblings().find('input').addClass('edit_input');
+					$(this).parent().parent().siblings().find('input').removeClass('edit_input');
+				});
+			});
+		</script>
+	</body>
+</html>

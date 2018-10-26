@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh" ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+		<script src="../js/angular.min.js"></script>
+	</head>
+	<body ng-controller="mainCtrl">
+		<div>
+			<input ng-model="test" />
+			<input ng-model="test" />
+
+			<h1>{{test}}</h1>
+		</div>
+		<script>
+			var app = angular.module('app', []);
+			app.controller('mainCtrl', function() {
+
+			});
+		</script>
+	</body>
+</html>
