@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myapp">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Cache-Control" content="no-store" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" type="text/css" href="https://i0.beta.ule.com/tomshopping/c/sys/csslib/110119/APE-admin.css">
+		<script type="text/javascript" src="https://i0.beta.ulecdn.com/removal/integral/merpointmgt//jquery-ui/js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="https://i0.beta.ule.com/j/jend/jend.js"></script>
+		<link rel="stylesheet" href="https://i0.beta.ule.com/tomshopping/c/sys/130111/template-admin.css" />
+		<script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+		<title>发票手工补入</title>
+		<style type="text/css">
+		</style>
+	</head>
+
+	<body ng-controller="mainCtrl" oncontextmenu="self.event.returnValue=false">
+		<div class="mainInner">
+			<ul class="crumbs">
+				<li><a class="score-0">CS后台管理系统</a><span class="direct">&gt;</span></li>
+				<li><a>发票手工补入</a></li>
+			</ul>
+			<div class="mt20 hidden">
+				<h3 class="Hs mb20 hsred">
+					<span>签收时间20180501号前手工结算条件</span>
+				</h3>
+				<br />
+				<div class="ml30 mt10 mr30">
+					<dl class="colunm c9999">
+						<dt>商家ID：</dt>
+						<dd>
+							<input class="Bgray w150 h20 " id="merchantOnlyid" type="text" name="merchantOnlyid" value="" />
+						</dd>
+						<dt>订单个数：</dt>
+						<dd>
+							<input class="Bgray w150 h20 " id="settNum" type="text" name="settNum" value="" onblur="pwd()" />
+						</dd>
+					</dl>
+					<dl class="colunm c3T4D8 cdg dl-tar colunmbotton mt15">
+						<dt></dt>
+						<dd colspan="6" style="padding-left: 20px;">
+							<input type="button" id="confirmButton" value="手工结算" class="btn buttonbgorange" onclick="confirmSett()" />
+						</dd>
+					</dl>
+				</div>
+			</div>
+			<div class="mt20 hide">
+				<h3 class="Hs mb20 hsred">
+					<span>发票补入</span>
+				</h3>
+				<br />
+				<div class="ml30 mt10 mr30">
+					<dl class="colunm c9999">
+						<dt>SQL:</dt>
+						<dd>
+							<textarea id="escOrderidOrder" name="escOrderidOrder" cols="50" style="width: 1760px;min-height: 200px;"></textarea>
+						</dd>
+					</dl>
+
+					<dl class="colunm c3T4D8 cdg dl-tar colunmbotton mt15">
+						<dt></dt>
+						<dd colspan="6" style="padding-left: 20px;">
+							<input type="button" id="confirmButtonOrder" value="悠着点" class="btn buttonbgorange " onclick="confirmAccount()" />
+						</dd>
+					</dl>
+				</div>
+			</div>
+	</body>
+	<script type="text/javascript">
+		var myapp = angular.module('myapp', []);
+		myapp.controller("mainCtrl", function($scope, $http) {
+			$scope.get = function() {
+				console.info('http start')
+				$http({
+					method: 'POST',
+					url: 'https://api.apiopen.top/EmailSearch?number=1012002'
+				}).then(function successCallback(response) {
+					// 请求成功执行代码
+					console.info("请求成功:" + JSON.stringify(response))
+				}, function errorCallback(response) {
+					// 请求失败执行代码
+					console.error("请求失败:" + JSON.stringify(response));     
+				});
+			};
+			$scope.get();
+		});
+
+		function refoundOrder() {
+			$.post("/pcsCmsWeb/account/manualRefoundOrder", {
+				orderIds: orderids
+			}, function(data) {
+				if (data.Msg != null) {
+					overlay.update({
+						text: data.Msg
+					});
+					window.setTimeout(function() {
+						overlay.hide();
+					}, 2000);
+				}
+				if (data.Error != null) {
+					overlay.update({
+						text: data.Error
+					});
+					window.setTimeout(function() {
+						overlay.hide();
+					}, 2000);
+				}
+			}, "json");
+		}
+	</script>
+</html>

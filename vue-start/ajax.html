@@ -1,70 +1,70 @@
 <!DOCTYPE html>
 <html lang="zh">
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>ajax</title>
-	<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
-	<script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>ajax</title>
+		<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+		<script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
+	</head>
 
-<body>
-	<div id="app">
-		<button @click="get()">发起Get请求</button>
-		<button @click="post()">发起Post请求</button>
-	</div>
+	<body>
+		<div id="app">
+			<button @click="get()">发起Get请求</button>
+			<button @click="post()">发起Post请求</button>
+		</div>
 
-	<script>
-		var json = {
-			"name": "zhangyinyuan"
-		};
-		//等待所有的DOM加载完毕后执行
-		window.onload = function () {}
-		var app = new Vue({
-			el: '#app',
-			data: {
-				jsonData: {
-					a: 1,
-					b: 2
-				}
-			},
-			methods: {
-				get: function () {
-					//发送get请求
-					this.$http.get('https://www.apiopen.top/journalismApi', this.jsonData).then(function (res) {
-						console.info(res.body.msg);
-					}, function (res) {
-						console.info(res.status);
-					});
+		<script>
+			var json = {
+				"name": "zhangyinyuan"
+			};
+			//等待所有的DOM加载完毕后执行
+			var app = new Vue({
+				el: '#app',
+				data: {
+					jsonData: {
+						a: 1,
+						b: 2
+					}
 				},
-				post: function () {
-					//发送 post 请求
-					this.$http.post('https://www.apiopen.top/weatherApi?city=成都', this.jsonData, {
-						emulateJSON: true
-					}).then(function (res) {
-						console.info(res.body);
-					}, function (res) {
-						console.info(res.status);
-					});
+				methods: {
+					get: function() {
+						//发送get请求
+						// http 模块来自  vue-resource.min
+						this.$http.get('https://www.apiopen.top/journalismApiX', this.jsonData).then(function(res) {
+							console.info(res.body.data);
+						}, function(res) {
+							console.info('request error---->' + res);
+						});
+					},
+					post: function() {
+						//发送 post 请求
+						this.$http.post('https://www.apiopen.top/weatherApiaaa?city=成都', this.jsonData, {
+							emulateJSON: true
+						}).then(function(res) {
+							console.info(res.body);
+						}, function(res) {
+							console.info(res.status);
+						});
+					}
+				},
+				computed: {
+
+				},
+				watch: {
+
 				}
-			},
-			computed: {
+			});
 
-			},
-			watch: {
-
-			}
-		});
-
-		console.info("开始延时");
-		setTimeout(
-			function () {
-				console.info("延时2s");
-			}, 2000
-		);
-	</script>
-</body>
+			console.info("开始延时");
+			setTimeout(
+				function() {
+					console.info("延时2s");
+				}, 2000
+			);
+		</script>
+	</body>
 
 </html>
